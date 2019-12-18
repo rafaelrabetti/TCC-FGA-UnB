@@ -1,0 +1,1606 @@
+\input{fixos/pacotes}
+\input{fixos/comandos}
+\input{fixos/novoscomandos}
+
+\input{editaveis/informacoes}
+\input{fixos/informacoes}
+\input{fixos/setup}
+
+\frenchspacing 
+
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode=true}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{upquote}
+\usepackage{listings}
+% CSS
+\lstdefinelanguage{CSS}{
+  keywords={color,background-image:,margin,padding,font,weight,display,position,top,left,right,bottom,list,style,border,size,white,space,min,width, transition:, transform:, transition-property, transition-duration, transition-timing-function},	
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]",
+  alsoletter={:},
+  alsodigit={-}
+}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+\date{}
+\setcounter{chapter}{1}
+\begin{document}
+
+\input{fixos/capa.tex}
+\imprimirfolhaderosto*
+
+\input{fixos/fichacatalografica}
+\input{fixos/folhadeaprovacao}
+
+\input{fixos/indiceautomatico.tex}
+
+\input{fixos/listasautomaticas.tex}
+
+\hypertarget{resumo}{%
+\chapter{Resumo}\label{resumo}}
+\hfill \break
+A organização do CSS em grandes projetos de desenvolvimento \emph{web} é
+um desafio. As ferramentas e processos disponíveis não são tão maduros quanto em outras áreas mais convencionais da Engenharia de Software. O crescimento constante do CSS ao longo do desenvolvimento de projetos web aumenta a dificuldade de manutenção e refatoração desse código e, ainda, compromete a eliminação de código obsoleto. O CSS atômico
+propõe uma abordagem em que as classes devem ser pequenas, com um
+propósito único e com nomes baseados na variação visual, evitando a
+redundância e reduzindo o tamanho, migrando a compexidade do CSS para o HTML.
+Esse trabalho tem como objetivo analisar e quantificar aspectos do uso das metodologia atômica e tradicional no desenvolvimento de CSS em repositórios de código aberto.
+
+\vspace{\onelineskip}
+
+\noindent
+\textbf{Palavras-chave}: CSS, CSS atômico, metodologia, análise
+
+
+\newpage
+
+\hypertarget{introduuxe7uxe3o}{%
+\chapter{Introdução}\label{introduuxe7uxe3o}}
+
+\hypertarget{contextualizauxe7uxe3o}{%
+\section{Contextualização}\label{contextualizauxe7uxe3o}}
+
+O CSS é uma linguagem de estilo usada para descrever a
+apresentação de documentos escritos normalmente em HTML e XML. Essa
+apresentação é definida por estilos que são aplicados a elementos
+específicos. O CSS detalha como os elementos devem ser renderizados na
+página.
+
+Ao passo que os grandes sites evoluem, O CSS tem a tendência de se tornar cada vez mais difícil de se gerenciar. O LinkedIn, por exemplo, possui mais de 1100 arquivos de Sass
+(pré processador de CSS), sendo 230 mil linhas de SCSS e mais de 90
+desenvolvedores escrevendo Sass todos os dias  \cite{eppstein}.
+
+O reaproveitamento de código e estilos, especialmente em grandes projetos, é difícil e trabalhoso. A adição de novos estilos e novas linhas de código se torna uma opção máis fácil e mais rápida. Desse modo, é comum que um código antigo se torne obsoleto, causando um inchaço no CSS.
+
+Abaixo vemos uma lista que apresenta o número de declarações únicas de CSS em grandes \emph{sites}: \nocite{cssstats}
+
+\begin{itemize}
+\tightlist
+\item
+  GitLab:
+  402 cores de texto, 239 cores de fundo, 59 tamanhos de fonte
+\item
+  Buffer:
+  124 cores de texto, 86 cores de fundo, 54 tamanhos de fonte
+\item
+  HelpScout:
+  198 cores de texto, 133 cores de fundo, 67 tamanhos de fonte
+\item
+  Gumroad:
+  91 cores de texto, 28 cores de fundo, 48 tamanhos de fonte
+\item
+  GitHub:
+  197 cores de texto, 177 cores de fundo, 51 tamanhos de fonte
+\item
+  ConvertKit:
+  128 cores de texto, 124 cores de fundo, 70 tamanhos de fonte
+\end{itemize}
+
+Esse número elevado de declarações únicas reduz a performance do time de desenvolvimento e também do site em questão, já que arquivos maiores levam mais tempo para carregar. Além disso, ao passo que mais declarações surgem, mais difícil se torna a refatoração desse código. Quanto maior o arquivo de CSS, maior será a dificuldade de gerenciamento do mesmo e a sua manutenção se torna muito onerosa.
+
+As regras no CSS possuem escopo global. Alterar uma regra pode
+gerar erros, portanto, é comum que novas regras sejam criadas e as regras antigas acabam
+ficando obsoletas porque, muitas vezes, evita-se editá-las ou removê-las.
+
+Além disso, mundaças simples de requisito podem exigir mudanças extensas no
+CSS, criando novas regras a partir de novos seletores. Essas mudanças criam arquivos grandes e complexos e acabam causando um inchaço no CSS \cite{koblentz}. 
+
+Arquivos grandes resultam em um tempo de carregamento maior e um mau uso
+do \emph{cache} do navegador \cite{ardeljan}. Além disso, a dificuldade de gerenciamento
+desses projetos aumenta gradativamente. Por isso, várias metodologias
+foram e estão sendo criadas para evitar esses problemas.
+
+Este trabalho discute a metodologia atômica como uma forma de mitigar esses problemas e a compara com outras abordagens mais tradicionais como o BEM e o SUIT CSS. 
+
+\hypertarget{objetivo}{%
+\section{Objetivo}\label{objetivo}}
+
+\hypertarget{geral}{%
+\subsection{Geral}\label{geral}}
+
+Analisar e quantificar aspectos do uso das metodologias atômica e tradicional no desenvolvimento de CSS em repositórios de código aberto.
+
+\hypertarget{especuxedficos}{%
+\subsection{Específicos}\label{especuxedficos}}
+
+\begin{itemize}
+\tightlist
+\item
+  Criar comparações entre o uso das metodologias atômica e tradicional em relação a quantidade de linhas de estilo
+\item
+  Validar o uso da metodologia atômica e verificar se ela realmente reduz o esforço de desenvolvimento do CSS
+\end{itemize}
+
+\hypertarget{organizauxe7uxe3o-do-documento}{%
+\section{Organização do
+documento}\label{organizauxe7uxe3o-do-documento}}
+
+Além do capítulo de introdução, este trabalho está organizado em mais
+3 capítulos:
+
+\begin{itemize}
+\tightlist
+\item
+  Capítulo 2 - (Referencial Teórico) Contém o referencial teórico sobre CSS. Além disso possui um conteúdo sobre as ferramentas que são utilizadas dentro do projeto.
+\item
+  Capítulo 3 - (Resultados) Apresenta as comparações realizadas e os resultados obtidos.
+\item
+  Capítulo 4 - (Conclusão) Apresenta uma conclusão a este trabalho e propostas para trabalhos futuros.
+\end{itemize}
+
+\newpage
+
+\hypertarget{referencial-teuxf3rico}{%
+\chapter{Referencial teórico}\label{referencial-teuxf3rico}}
+
+Este capítulo discute conceitos importantes para compreender e definir
+recomendações arquiteturais para criação de folhas de estilo CSS (do
+inglês, \emph{Cascading Style Sheets}). Mais especificamente, estamos
+interessados na abordagem de CSS atômico, que será discutida adiante.
+
+\hypertarget{css}{%
+\section{CSS}\label{css}}
+
+\hypertarget{funcionamento-do-css}{%
+\subsection{Funcionamento do CSS}\label{funcionamento-do-css}}
+
+O CSS é a linguagem que define como os documentos são exibidos aos
+usuários em uma página web. É no CSS em que se define várias
+características visuas que um elemento pode possuir, como sua altura,
+largura, cor e seu posicionamento, entre outras.\nocite{howcssworks}
+
+Um documento é normalmente um arquivo estruturado utilizando uma
+linguagem de marcação, sendo o HTML a mais comum. Esse documento é
+apresentado pelo navegador na forma de páginas usáveis para os usuários.
+
+O navegador também é responsável a aplicar as regras de estilo do CSS ao
+documento para afetar como este será apresentado. Um conjunto de regras
+contidas em uma folha de estilo determina a aparência de uma página.
+
+Abaixo segue um exemplo da interação de um arquivo HTML com um arquivo
+de CSS complementar:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{<!DOCTYPE }\NormalTok{html}\DataTypeTok{>}
+\KeywordTok{<html>}
+  \KeywordTok{<head>}
+    \KeywordTok{<meta}\OtherTok{ charset=}\StringTok{"utf-8"}\KeywordTok{>}
+    \KeywordTok{<title>}\NormalTok{Meu Exemplo}\KeywordTok{</title>}
+    \KeywordTok{<link}\OtherTok{ rel=}\StringTok{"stylesheet"}\OtherTok{ href=}\StringTok{"main.css"}\KeywordTok{>}
+  \KeywordTok{</head>}
+  \KeywordTok{<body>}
+    \KeywordTok{<h1>}\NormalTok{Olá Mundo!}\KeywordTok{</h1>}
+    \KeywordTok{<p>}\NormalTok{Este é um exemplo de HTML com CSS}\KeywordTok{</p>}
+  \KeywordTok{</body>}
+\KeywordTok{</html>}
+\end{Highlighting}
+\end{Shaded}
+
+CSS complementar:
+
+\begin{verbatim}
+h1 {
+  color: blue;
+  background-color: yellow;
+  border: 1px solid black;
+}
+
+p {
+  color: red;
+}
+\end{verbatim}
+
+A primeira regra do arquivo de CSS começa com um seletor \texttt{h1},
+isso significa que as regras definidas nesse seletor serão aplicadas a
+todos os elementos \texttt{\textless{}h1\textgreater{}} do documento. Esses
+elementos terão o texto com a cor azul, cor de fundo amarela e com borda
+de 1 pixel, sólida e de cor preta.
+
+Do mesmo modo, a segunda regra possui um seletor \texttt{p} que aplica a regra \texttt{color: red} a
+todos os elementos \texttt{\textless{}p\textgreater{}} do HTML.
+
+Então, entende-se que o CSS é uma linguagem de busca de 
+elementos através de seletores, para
+aplicar o estilo associado, e assim alterar a
+apresentação do documento.
+
+No exemplo abaixo, é definida uma regra para todas as marcações
+\texttt{\textless{}p\textgreater{}} em um documento.
+
+\begin{verbatim}
+p{
+    color: red;
+}
+\end{verbatim}
+
+Essa regra é composta por:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Seletor} O elemento HTML que será estilizado, neste caso o
+  elemento \texttt{\textless{}p\textgreater{}}.
+\item
+  \textbf{Declaração} A declaração é o conjunto da propriedade com o
+  valor, neste caso \texttt{color:\ red;}
+\item
+  \textbf{Propriedade} Qual propriedade será afetada por essa
+  declaração, neste caso é a propriedade \texttt{color}.
+\item
+  \textbf{Valor} Define uma entre várias possibilidades de aparência
+  para uma dada propriedade, existem vários valores para \texttt{color}
+  além de \texttt{red}.
+\end{itemize}
+
+A regra acima seleciona apenas um único elemento e modifica apenas uma
+propriedade, porém é possível selecionar vários elementos e também
+modificar várias propriedades em uma única regra. Além disso, é possível
+ser mais específico ao selecionar elementos, podendo selecionar através
+de classes ou identificadores de elementos, por exemplo.
+
+As regras em CSS são sempre globais,
+podendo afetar qualquer página em que forem aplicadas, o que pode ocasionar
+problemas, como veremos nos tópicos posteriores.
+
+\hypertarget{especificidade}{%
+\subsection{Especificidade}\label{especificidade}}
+
+A noção de cascata é fundamental para o entendimento do CSS (\emph{Cascading
+Style Sheets}). É a partir dessa noção que se determina qual propriedade
+modificará um elemento \cite{friedman}. A cascata segue três passos para determinar essa
+modificação: importância, especificidade e fonte. Ao final desse
+processo, é assinalado um peso para cada regra. Esse peso determina qual
+regra terá precedência e, sendo assim, qual regra será aplicada, no caso
+de haver mais de uma regra para um elemento específico. \nocite{cascading}
+
+A cascata recebe uma lista não ordenada de valores declarados para uma
+propriedade específica de um dado elemento, e a ordena pela precedência
+da declaração, retornando um único valor de cascata. O resultado da
+cascata é uma lista ordenada de valores declarados para cada propriedade
+em cada elemento e segue os critérios abaixo.
+
+\hypertarget{especificidade-1}{%
+\paragraph{1. Especificidade}\label{especificidade-1}}
+
+Toda regra CSS tem um peso relacionado à ela, regras de peso maior tem
+maior importância e, são escolhidas em detrimento à regras de menor importância. Esse peso é o que define qual regra será aplicada ao
+elemento quando se tem regras conflitantes.
+
+Ao se obter a importância de uma regra, é atribuida uma especificidade.
+Caso uma regra seja mais específica que outra, ela a sobrescreve.
+
+Para calcular a especificidade, temos as seguintes ordens lexicográficas: 
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Elemento ou pseudo-elemento}: {[}0,0,0,1{]}
+  \item
+  \textbf{Atributo}: {[}0,0,1,0{]}
+  \item
+  \textbf{Classe ou pseudo-classe}: {[}0,0,1,0{]}
+  \item
+  \textbf{Identificador único (id)}: {[}0,1,0,0{]}
+  \item
+  \textbf{Estilo em linha}: {[}1,0,0,0{]}
+  \item
+  \textbf{Important}:
+\end{itemize}
+
+
+Assim podemos calcular a especificidade dos seletores contando o número de elementos de cada tipo.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{p.note}: 1 classe + 1 elemento = {[}0,0,1,1{]}
+  \item
+  \texttt{\#sidebar p{[}lang="en"{]}}:  1 ID + 1 atributo + 1 elemento = {[}0,1,1,1{]}
+  \item
+  \texttt{body \#main .post ul > li:last-child}: 1 ID + 1 classe + 1 pseudo-classe + 3 elementos = {[}0,1,2,3{]}
+\end{itemize}
+
+Se dois seletores aplicam estilo a um elemento, apenas o estilo do
+seletor mais específico será aplicado. A especificidade está relacionada
+ao peso em que um seletor possui em relação a outro. A variação desse
+peso entre vários seletores pode ocasionar em um estilo não aplicado. 
+
+Logo, sabendo que a especificidade é, basicamente, a ordem lexicográfica de um seletor, então um seletor de ordem {[}0,1,0,0{]} prevalece sobre um seletor de ordem {[}0,0,100,1000{]}. Se dois seletores possuirem a mesma especificidade, a ordem de escrita prevalece, o último sobrescreve os anteriores.
+
+Finalmente, a declaração \texttt{!important} sobrescreve qualquer regra não importa sua especificidade. É a declaração mais forte.
+
+\hypertarget{importuxe2ncia}{%
+\paragraph{2. Importância}\label{importuxe2ncia}}
+
+Uma folha de estilo pode ter diferentes fontes:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Usuário agente} - folha de estilo padrão do navegador
+\item
+  \textbf{Usuário} - opções do navegador do usuário
+\item
+  \textbf{Autor} - O CSS fornecido pela página (em linha, embutido ou
+  externo)
+\end{enumerate}
+
+Por padrão, essa é a ordem em que esses estilos são processados, então a
+regra definida no estilo do autor tem mais peso que as outras.
+
+Além disso precisamos levar em conta a declaração \texttt{!important}.
+Se no nível do usuário for utilizada essa declaração, ela terá
+precedência sobre qualquer outra, mesmo se no nível do autor também for
+usada. Levando isso em consideração, temos, finalmente, a ordem
+crescente de precedência:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Usuário agente
+\item
+  Usuário
+\item
+  Autor
+\item
+  Animações
+\item
+  Autor \texttt{!important}
+\item
+  Usuário \texttt{!important}
+\item
+  Usuário agente \texttt{!important}
+\item
+  Transições
+\end{enumerate}
+
+É importante destacar que essa ordenação de precedência é apenas
+utilizada para elementos e propriedades com a mesma especificidade,
+visto que esta tem mais importância.
+
+\hypertarget{heranuxe7a}{%
+\paragraph{3. Herança}\label{heranuxe7a}}
+
+Além dos tópicos citados acima, a herança também afeta os elementos da
+cascata. Porém, a herança não tem efeito nenhum sobre a especificidade
+ou a importância de uma regra. A herança em CSS é, simplesmente, uma
+forma de propagar uma propriedade de um elemento pai para os seus
+filhos.
+
+Algumas propriedades CSS são herdadas pelos elementos filhos por padrão.
+Por exemplo, se atribuirmos uma fonte específica à \emph{tag}
+\texttt{body}, essa fonte será herdada por outros elementos filhos, como
+\texttt{h1} e \texttt{p}. Essa herança acontece sem que nenhuma linha de
+código a mais tenha que ser escrita. Isso já acontece naturalmente
+porque toda propriedade CSS possui um valor inicial padrão que já é
+herdado aos seus elementos filhos.
+
+As regras de herança são complicadas pelo fato de que é possível
+alterar as regras de herança utilizando propriedades CSS. Por exemplo,
+\texttt{width:\ inherit;} faz um elemento herdar a propriedade
+\texttt{width} do elemento pai.
+
+\hypertarget{ordem-de-apariuxe7uxe3o}{%
+\paragraph{4. Ordem de aparição}\label{ordem-de-apariuxe7uxe3o}}
+
+A última declaração em um documento tem maior precedência se todos os
+critérios acima forem iguais. Por isso, as declarações de folhas de
+estilo importadas são ordenadas como se as regras de \texttt{@import}
+fossem substituídas pela respectiva folha de estilo .
+
+\hypertarget{metodologias-de-desenvolvimento}{%
+\subsection{Metodologias de
+desenvolvimento}\label{metodologias-de-desenvolvimento}}
+
+Em projetos grandes e complexos, a forma de organização do código é
+crucial para a eficiência. Diminuir o tempo de escrita de código,
+diminuir a quantidade de código a ser escrito e diminuir a quantidade de
+informações que o navegador terá de carregar são metas importantes em
+projetos de alta performance. Por isso, várias metodologias de
+desenvolvimento de CSS foram criadas a fim de reduzir a complexidade e
+facilitar a manutenção desses arquivos.
+
+As metodologias estabelecidas possuem o objetivo comum de evitar
+conflitos de especificidade e aumentar o reuso do código.
+
+\hypertarget{bem}{%
+\paragraph{BEM}\label{bem}}
+
+A principal finalidade do BEM é desacoplar o CSS da estrutura da DOM, o
+tornando mais independente. Isso é obtido por meio da adição de mais
+classes ao HTML para acessá-las diretamente, mantendo assim a
+especificidade baixa.\nocite{bem}
+
+A estrutura do BEM (\emph{Blocks, Elements and Modifiers}) segue a
+seguinte lógica:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{\emph{blocks}} são entidades que fazem sentido por si só:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{cabeçalho}, \texttt{recipiente}, \texttt{menu} , \texttt{lista}
+  \end{itemize}
+\item
+  \textbf{\emph{elements}} são parte de um bloco que apenas fazem
+  sentido de ligadas à um bloco:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{menu\ item}, \texttt{list\ item}
+  \end{itemize}
+\item
+  \textbf{\emph{modifier}} é um modificador em um bloco ou elemento a
+  fim de alterar aparência ou comportamento:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{disabled}, \texttt{checked}, \texttt{color\ yellow}
+  \end{itemize}
+\end{itemize}
+
+Nessa metodologia existe uma regra de nomeação que segue um padrão. Os
+\emph{blocks} consistem de letras, dígitos e traços
+
+\begin{itemize}
+\tightlist
+    \item 
+        A primeira classe sempre será um \emph{block}: \texttt{.lista}
+        
+    \item
+        Para criarmos os \emph{elements}, utilizamos dois sublinhados (\texttt{\_\_}) após o nome do nosso \emph{block}: \texttt{.lista\_\_item}   \texttt{.lista\_\_titulo}
+        
+    \item
+        Para criarmos os \emph{modifiers} utilizamos dois traços (\texttt{-{}-}) após um \emph{block} ou \emph{element}:  \texttt{.lista\_\_item-{}-destacado}   \texttt{.lista\_\_autor-{}-ativo}
+        
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{<div}\OtherTok{ class=}\StringTok{"autor-bio"}\KeywordTok{>}  
+    \KeywordTok{<img}\OtherTok{ class=}\StringTok{"autor-bio__imagem autor-bio__imagem--grande"} \OtherTok{ src=}\StringTok{"http"}\OtherTok{ alt=}\StringTok{""}\KeywordTok{>}  
+    \KeywordTok{<div}\OtherTok{ class=}\StringTok{"autor-bio__conteudo"}\KeywordTok{>}  
+        \KeywordTok{<h2}\OtherTok{ class=}\StringTok{"autor-bio__nome"}\KeywordTok{>}\NormalTok{Meu nome}\KeywordTok{</h2>}  
+        \KeywordTok{<p}\OtherTok{ class=}\StringTok{"autor-bio__corpo"}\KeywordTok{>} 
+\NormalTok{            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam pretium.}
+        \KeywordTok{</p>}  
+    \KeywordTok{</div>}  
+\KeywordTok{</div>}
+\end{Highlighting}
+\end{Shaded}
+
+Este trecho poderia ser suplementado pelo seguinte CSS:
+
+\begin{verbatim}
+.autor-bio { 
+    background-color: white;
+    ...
+} 
+.autor-bio__imagem { 
+    display: block;
+    ...
+}
+.autor-bio__imagem--grande { 
+    width: 100%;
+    ...
+} 
+.autor-bio__conteudo { 
+    padding: 1rem; 
+} 
+.autor-bio__nome { 
+    font-size: 1.25rem; ; 
+} 
+.autor-bio__corpo { 
+    font-size: 1rem;
+}
+\end{verbatim}
+
+As mudanças de atualizações visuais ficam restritas apenas ao CSS e não
+há problemas de especificidade de seletor. O HTML continua fazendo
+sentido semanticamente sem haver nenhum estilo em linha. Já que o BEM não utiliza seletores filhos, os possíveis problemas de especificidade são evitados.
+
+\hypertarget{suitcss}{%
+\paragraph{SUITCSS}\label{suitcss}}
+
+O SUITCSS é uma metodologia que foca em melhorar a experiência de
+escrever o código CSS em projetos de desenvolvimento baseado em
+componentes.\nocite{suitcss}
+
+Essa metodologia se assimila ao BEM em vários aspectos, já que
+podemos considerar um componente como um bloco e seus filhos como
+elementos. Porém a convenção de nomes é diferente. Além disso, o SUIT aceita um nível a mais de precedência para representar o estado de um componente. O estilo dessa classe nunca deve ser definido diretamente, ela deve ser usada como uma classe adjacente ao componente, como por exemplo, \texttt{.AutorBio-corpo.is-expanded}.
+
+\begin{verbatim}
+/** CSS */
+
+.AutorBio{ /* ... */ }
+.AutorBio--grande{ /* ... */ }
+.AutorBio-imagem{ /* ... */ }
+.AutorBio-conteudo{ /* ... */ }
+.AutorBio-nome{ /* ... */ }
+.AutorBio-corpo.is-expanded{ /* ... */ }
+\end{verbatim}
+
+\noindent
+\texttt{<!-{}- HTML -{}->}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{<div}\OtherTok{ class=}\StringTok{"AutorBio"}\KeywordTok{>}  
+    \KeywordTok{<img}\OtherTok{ class=}\StringTok{"AutorBio-imagem"}\OtherTok{ src=}\StringTok{"https://..."}\OtherTok{ alt=}\StringTok{""}\KeywordTok{>}  
+    \KeywordTok{<div}\OtherTok{ class=}\StringTok{"AutorBio-conteudo"}\KeywordTok{>}  
+        \KeywordTok{<h2}\OtherTok{ class=}\StringTok{"AutorBio-nome"}\KeywordTok{>}\NormalTok{Meu nome}\KeywordTok{</h2>}  
+        \KeywordTok{<p}\OtherTok{ class=}\StringTok{"AutorBio-corpo is-expanded"}\KeywordTok{>} 
+\NormalTok{            Lorem ipsum dolor sit amet, consectetur adipiscing elit.}
+        \KeywordTok{</p>}  
+    \KeywordTok{</div>}  
+\KeywordTok{</div>}
+\end{Highlighting}
+\end{Shaded}
+
+Além disso, a componentização também é usada a nível de variáveis.
+
+\begin{verbatim}
+/** @define AutorBio*/
+
+:root {
+  --AutorBio-border-width: 5px;
+}
+
+.AutorBio{
+  border-width: var(--AutorBio-border-width);
+}
+\end{verbatim}
+
+Evita-se criar dependência entre os componentes, mesmo que o seu código
+não fique totalmente ``DRY'' (\emph{don't repeat yourself}). Esse
+isolamento de componentes previne um aumento de complexidade e é chave
+para o reuso.
+
+\hypertarget{oocss}{%
+\paragraph{OOCSS}\label{oocss}}
+
+O OOCSS tenta transpor conceitos de orientação a objetos para o CSS. Seu objetivo é tornar o CSS mais gerenciável
+por meio da aplicação dos princípios do desenvolvimento orientado a
+objeto, que foram amplamente difundidos por linguagens de programação
+como o Java e o Ruby. Nessa metodologia, vários conceitos da programação orientada a objeto
+são incluídos, como o princípio da responsabilidade única e a separação
+de interesses. \nocite{oocss}
+
+O objeto no OOCSS é qualquer padrão visual que pode ser especificado em
+trechos de código. Elementos de uma página ou até grupos de elementos
+podem ser tratados como entidades únicas na folha de estilo.
+
+Duas grandes regras definem o OOCSS, a primeira é estabelecer uma
+divisão clara entre estrutura e estilo. A estrutura de uma aplicação diz
+respeito a aspectos que não são diretamente visíveis ao usuário, como
+posição e tamanho de um elemento. O estilo de uma aplicação diz respeito
+aos apectos visuais de um elemento, como cores e fontes.
+
+
+A segunda regra é separar o contêiner do conteúdo. Como regra geral, estilos nunca podem estar restritos a um conteúdo específico. Desse modo, a reutilização de estilos é facilitada. Além disso, para evitar que existam padrões de estilo repetidos no código, o OOCSS recomenda que uma nova classe seja criada a partir desse padrão.
+
+Essa metodologia tem como premissa evitar o uso de seletores filhos, sendo uma boa estratégia para separar contêiner de conteúdo e, assim, aplicando classes únicas a elementos únicos.
+
+\hypertarget{itcss}{%
+\paragraph{ITCSS}\label{itcss}}
+
+Essa metodologia usa a analogia de um triângulo invertido com camadas
+para explicar os seus conceitos. Diferentemente das outras metodologias,
+o ITCSS não utiliza nenhuma convenção de nomeclatura, mas é uma metodologia de organização dos módulos e arquivos de CSS \cite{itcss}. Existem três
+princípios:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Do genérico ao explícito} Inicia-se pelo pelo mais genérico e
+  baixo nível dos estilos, que tem uma alta abrangência. Podendo ser uma
+  configuração de fonte ou variáveis da paleta de cores.
+\item
+  \textbf{De baixa a alta especificidade} Os seletores de baixa
+  especificidade aparecem no começo do seu projeto. E gradativamente vão
+  aparecendo os seletores com especificidade maior, evitando conflitos e
+  o uso do \texttt{!important}.
+\item
+  \textbf{De longo alcance a localizado} No começo do projeto aparecem
+  os seletores que afetam vários elementos ao mesmo tempo, e
+  gradativamente vão aparecendo seletores mais localizados que afetam
+  apenas um componente.
+\end{enumerate}
+
+Esses três princípios são aplicados nas camadas do triângulo invertido
+de modo que cada camada é uma progressão lógica da camada anterior.
+Aumenta a especificidade, estreita-se o alcance e aumenta a explicitude
+a cada camada avançada para baixo. As camadas são as seguintes:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Configurações} - Variáveis de configuração globais como cores,
+  espaçamentos, fontes, etc.
+\item
+  \textbf{Ferramentas} - Funções ou mixins que ficarão disponíveis
+  globalmente.
+\item
+  \textbf{Genérico} - Estilos de alto nível como Normilize.css, CSS
+  resets, box-sizing, etc.
+\item
+  \textbf{Elementos} - Estilos de elementos puros e sem classe como
+  underline em hover de link e font-size de headers.
+\item
+  \textbf{Objetos} - Elementos com classes como containers e rows. A
+  grid também é definida aqui.
+\item
+  \textbf{Componentes} - A maioria da estilização acontece aqui,
+  componentes como card ou navbar.
+\item
+  \textbf{Trunfos} - Caso seja necessário sobreescrever algum estilo e
+  usar o \texttt{!important}.
+\end{enumerate}
+
+Ao passo que essa metodologia define as 7 camadas, não é necessário o
+uso de todas elas, porém se o uso da sobreposição de estilos está se
+fazendo necessária, é quase certo que a estrutura de camadas utilizada
+não está adequada.
+
+Vale ressaltar ainda que o ITCSS pode ser usado com conjunto de
+metodologias como o BEM ou o SUITCSS, visto que a ITCSS define uma
+organização de arquivos com base na precedência e não uma convenção de nomeclatura para classes de CSS.
+
+\hypertarget{css-atuxf4mico}{%
+\subsection{CSS Atômico}\label{css-atuxf4mico}}
+
+CSS Atômico, também conhecido como CSS Funcional, é uma abordagem de
+escrita CSS que estabelece que as classes devem ser pequenas, com um
+propósito único e com nomes baseados na função visual. Ao mapear as classes para um estilo único, tem-se um conjunto
+de regras mais granular e, com isso, ganha-se em reusabilidade \cite{koblentz}.
+
+Abaixo segue um exemplo de uma regra CSS aplicando o princípio Atômico:
+
+\begin{verbatim}
+.tc{  
+    text-align: center;
+}
+\end{verbatim}
+
+Uma das premissas dessa metodologia é que a complexidade deve estar no
+HTML e não no CSS. Com isso, é possível reutilizar as classes,
+resultando em arquivos de CSS mais simples e de tamanho reduzido e limitado.
+
+O CSS atômico, diferentemente das outras metodologias, apresenta uma solução não apenas para o gerenciamento de folhas de estilo e nomeclaturas de classe. O CSS atômico, além de atender esses quesitos, propõe uma metodologia que impacta no projeto como um todo, visto que temos como resultado folhas de estilo minimalistas e decisões de estilo centradas no HTML.
+
+Essa abordagem é constrastante se compararmos à metodologia tradicional
+de separação de interesses. No CSS atômico, as classes têm
+responsabilidade única e não há nenhuma separação entre conteúdo e as
+decisões de estilo. Entende-se que a possibilidade da reutilização de
+classes é mais valiosa do que um HTML independente das decisões de
+estilo.
+
+\hypertarget{abordagens-comuns}{%
+\subsection{Abordagens comuns}\label{abordagens-comuns}}
+
+O termo CSS atômico se aplica à filosofia
+arquitetural e não à uma variação específica\cite{polacek}. Abaixo temos uma lista de variações do uso do CSS atômico e alguns termos relacionados.
+
+\hypertarget{as-variauxe7uxf5es-do-uso-do-css-atuxf4mico}{%
+\paragraph{As Variações do uso do CSS
+Atômico}\label{as-variauxe7uxf5es-do-uso-do-css-atuxf4mico}}
+
+\hypertarget{estuxe1tico}{%
+\subparagraph{Estático}\label{estuxe1tico}}
+
+O método estático é a forma padrão de se escrever CSS. Esse método é
+bastante utilizado e normalmente se usa em conjunto com um
+pré-processador para gerar a biblioteca de classes.
+
+Nesse méotodo, o nome das classes está diretamente relacionado com a variação visual que aplicam. As classes declaram a propriedade que será modificada, podendo conter uma progressão numérica para as propriedades dimensionáveis. Uma das vantagens de utilizá-lo é por ele ser familiar e,
+por isso, a sua curva de aprendizado é pequena.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{.f1}\NormalTok{ \{ }\KeywordTok{font{-}size}\NormalTok{: }\DecValTok{3}\DataTypeTok{rem}\OperatorTok{;}\NormalTok{ \}}
+\FunctionTok{.f2}\NormalTok{ \{ }\KeywordTok{font{-}size}\NormalTok{: }\DecValTok{2.25}\DataTypeTok{rem}\OperatorTok{;}\NormalTok{ \}}
+\FunctionTok{.i}\NormalTok{ \{         }\KeywordTok{font{-}style}\NormalTok{: }\DecValTok{italic}\OperatorTok{;}\NormalTok{ \}}
+\FunctionTok{.b}\NormalTok{ \{         }\KeywordTok{font{-}weight}\NormalTok{: }\DecValTok{bold}\OperatorTok{;}\NormalTok{ \}}
+\FunctionTok{.underline}\NormalTok{ \{ }\KeywordTok{text{-}decoration}\NormalTok{: }\DecValTok{underline}\OperatorTok{;}\NormalTok{ \}}
+\FunctionTok{.strike}\NormalTok{ \{    }\KeywordTok{text{-}decoration}\NormalTok{: }\DecValTok{line{-}through}\OperatorTok{;}\NormalTok{ \}}
+\FunctionTok{.ttc}\NormalTok{ \{       }\KeywordTok{text{-}transform}\NormalTok{: }\DecValTok{capitalize}\OperatorTok{;}\NormalTok{ \}}
+\FunctionTok{.ttu}\NormalTok{ \{       }\KeywordTok{text{-}transform}\NormalTok{: }\DecValTok{uppercase}\OperatorTok{;}\NormalTok{ \}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{programuxe1tico}{%
+\subparagraph{Programático}\label{programuxe1tico}}
+
+O método programático envolve alguma ferramenta para gerar os estilos
+que são escritos diretamente no HTML.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\CommentTok{<!-- Exemplo de CSS Atômico Programático -->}
+\KeywordTok{<div}\OtherTok{ class=}\StringTok{"Bgc(#0280ae) C(#fff) P(20px)"}\KeywordTok{>}
+\NormalTok{    Lorem ipsum}
+\KeywordTok{</div>}
+\end{Highlighting}
+\end{Shaded}
+
+Geraria as seguintes declarações:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{.Bgc}\NormalTok{\textbackslash{}(#0280ae\textbackslash{}) \{ }\KeywordTok{background-color}\NormalTok{: }\ConstantTok{#0280ae}\OperatorTok{;}\NormalTok{ \}}
+\FunctionTok{.C}\NormalTok{\textbackslash{}(}\PreprocessorTok{#fff\textbackslash{})}\NormalTok{ \{ }\KeywordTok{color}\NormalTok{: }\ConstantTok{#fff}\OperatorTok{;}\NormalTok{ \}}
+\FunctionTok{.P}\NormalTok{\textbackslash{}(20px\textbackslash{}) \{ }\KeywordTok{padding}\NormalTok{: }\DecValTok{20}\DataTypeTok{px}\OperatorTok{;}\NormalTok{ \}}
+\end{Highlighting}
+\end{Shaded}
+
+Essa abordagem usa a sintaxe de uma chamada de função com parâmetros.
+Utilizando uma ferramenta para gerar os estilos, não é necessário
+escrever nenhuma linha de CSS. Toda a folha de estilo é gerada durante o
+processo de \emph{build} e é totalmente otimizada, sem nenhum estilo não
+usado ou algo do tipo.
+
+\hypertarget{longhandleguxedvelshorthandabreviado}{%
+\subparagraph{\texorpdfstring{\emph{Longhand}(Legível)/\emph{Shorthand}(Abreviado)}{Longhand(Legível)/Shorthand(Abreviado)}}\label{longhandleguxedvelshorthandabreviado}}
+
+Outra decisão arquitetural importante consiste na metodologia para
+definir os nomes das classes. Aqui temos dois outros métodos, o
+\emph{Longhand} tem como preferência a escrita legível e por isso os
+nomes das classes normalmente são longos. Já o \emph{Shorthand} tem como
+preferência a escrita mais concisa e objetiva.
+
+\begin{verbatim}
+/* Exemplo de CSS Atômico Shorthand */
+
+.bg-blue { background-color: #357edd; }
+.f1 { font-size: 3rem; }
+.ma0 { margin: 0; }
+
+/* Exemplo de CSS Atômico Longhand */
+
+.background-blue  { background-color: #357edd; }
+.text-h1 { font-size: 3rem; }
+.text-3rem { font-size: 3rem; }
+.text-huge { font-size: 3rem; }
+.fontsize-1 { font-size: 3rem; }
+.margin-0 { margin: 0; }
+\end{verbatim}
+
+É comum que abordagens \emph{Longhand} favoreçam classes que espelhem as
+propriedades CSS correspondentes. Assim o nome da classe é semelhante,
+ou muitas vezes igual, ao nome da propriedade que ela define.
+
+\hypertarget{termos-relacionados}{%
+\paragraph{Termos Relacionados}\label{termos-relacionados}}
+
+\hypertarget{classes-de-utilidade}{%
+\subparagraph{Classes de Utilidade}\label{classes-de-utilidade}}
+
+Classes de utilidade são classes de fácil entendimento, por serem
+objetivas, e de responsabilidade única que aplicam alguma regra de
+estilo.
+
+Várias arquiteturas de CSS se apoiam no uso de algumas classes de
+utilidade para algumas funcionalidades, porém não adotam o conceito de
+CSS atômico, como é o caso do Bootstrap.
+
+\hypertarget{css-imutuxe1vel}{%
+\subparagraph{CSS Imutável}\label{css-imutuxe1vel}}
+
+Um aspecto do CSS atômico é que as classes de utilidade nunca devem ser
+modificadas, o que resulta em resultados altamente confiáveis. A
+imutabilidade é essencial para a execução adequada da arquitetura do CSS
+Atômico. Normalmente as classes de utilidade são fornecidas por uma
+biblioteca e o usuário somente compõe estas classes no HTML.
+
+Uma das principais motivações do CSS atômico é mover a complexidade das
+folhas de estilo para o HTML. Quando ocorrem mudanças no design, é
+melhor termos um HTML bem estruturado para que possamos trocar de
+\texttt{.background-blue} para \texttt{.background-black}
+rapidamente.
+
+\hypertarget{breakpoint-prefixing}{%
+\subparagraph{Breakpoint Prefixing}\label{breakpoint-prefixing}}
+
+É uma técnica que permite que as classes de utilidade usem da
+sobreposição de estilos em \emph{breakpoints} diferentes para que a
+implementação de telas responsivas seja simples e eficaz.
+
+\begin{verbatim}
+/* Exemplos de breakpoint prefixing */
+
+.grid-12   /* Tamanho tela cheia padrão */
+.m-grid-6  /* 2 colunas em telas médias */
+.l-grid-4  /* 3 colunas para telas grandes */
+\end{verbatim}
+
+\hypertarget{frameworksexistentes}{%
+\subsection{Frameworks Existentes}\label{frameworksexistentes}}
+
+\hypertarget{tailwind}{%
+\subparagraph{Tailwind}\label{tailwind}}
+
+O Tailwind CSS é um framework que segue o padrão legível na nomeclatura das classes, é escrito em PostCSS e é configurado em Javascript.
+
+\hypertarget{tachyons}{%
+\subparagraph{Tachyons}\label{tachyons}}
+
+O Tachyons é um framework que segue o padrão abreviado na nomeclatura das classes
+
+\hypertarget{justificativa}{%
+\subsection{Justificativa}\label{justificativa}}
+
+CSS é simples e deve ser
+responsável por ações simples \cite{ardeljan}. Ao se utilizar classes em CSS com
+responsabilidade única, é possível reutilizá-las infinitamente e isso
+resulta em arquivos de CSS pequenos e objetivos, o que traz benefícios à perfomance
+dos projetos. 
+
+\begin{verbatim}
+.tc {  
+  text-align: center;  
+}
+\end{verbatim}
+
+Considerando que performance é um requisito, optar por essa abordagem
+sucede em um carregamento mais rápido da página, o que afeta
+positivamente os usuários. 300kb de CSS pode demora tipicamente
+10 segundos para se carregar em uma conexão 3G, dependendo
+da sua velocidade \cite{ardeljan}.
+
+Toda nova linha de CSS é como um quadro branco, nada impede que se use valores arbitrários. Toda nova linha de CSS é uma nova oportunidade para um aumento de complexidade, escrever mais CSS nunca deixará o CSS mais simples \cite{wathan}.
+
+Porém, é importante ressaltar que não existe desacoplamento completo
+entre CSS e HTML. Ao escrever CSS semântico, ainda assim, não há uma
+separação total de interesses. O HTML pode estar livre de decisões de
+estilo porém, o CSS fica dependente da estrutura de marcação feita pelo
+HTML. Do mesmo modo, ao escrever CSS atômico, o CSS se torna
+independente da estrutura do HTML, porém o HTML é inteiramente afetado
+pelas decisões de estilo.
+
+Além disso, é importante ressaltar que CSS atômico não é a mesma coisa que CSS \emph{inline}. Com o CSS \emph{inline} existe o mesmo problema da metodologia tradicional, em que não há regras para os valores escolhidos, podendo escolher qualquer valor arbitrário. E, além disso, no CSS \emph{inline}, não é possível fazer as \emph{media-queries} para manter a responsividade do design.
+
+Ao seguir o princípio da separação de interesses, de acordo com os proponentes do CSS atômico, é inevitável que não ocorra um
+inchaço do arquivo de CSS, além de causar redundância e um mau
+gerenciamento de \emph{cache} do navegador. Mudanças simples no estilo
+de um elemento muitas vezes resultam em novas regras na folha de estilo
+incentivando a duplicação de código \cite{koblentz}.
+
+CSS reutilizável é a melhor
+opção, principalmente em aplicações grandes \cite{gallagher}. Nessas aplicações
+percebe-se que ao passo que o código cresce, mais difícil é a sua
+manutenção. Utilizando componentes CSS reutilizáveis reduz o tempo de
+escrita e edição do código. Já que, nesse caso, é necessário aplicar
+mudanças nas classes do HTML. É uma prática que
+beneficia os desenvolvedores visto que mudanças no HTML são mais
+literais \cite{gallagher}.
+
+\newpage
+
+\hypertarget{tecnologias-e-ferramentas}{%
+\section{Tecnologias e
+Ferramentas}\label{tecnologias-e-ferramentas}}
+
+\hypertarget{cloc}{%
+\subsection{Cloc}\label{cloc}}
+
+Ferramenta de código aberto utilizada para contar as linhas de código de um determinado projeto. O CLOC conta as linhas de código, dividindo o resultado por tipo de arquivo, mostrando assim a quantidade de linhas de cada tecnologia.
+
+Ainda, é possível mostrar esses resultados em diferentes formatos, podendo ser gerado um arquivo \emph{txt} ou \emph{csv}, por exemplo.
+
+Abaixo, temos um exemplo do uso do CLOC.
+
+\begin{verbatim}
+prompt> cloc gcc-5.2.0/gcc/c
+      16 text files.
+      15 unique files.
+       3 files ignored.
+       
+https://github.com/AlDanial/cloc v 1.65
+T=0.23 s (57.1 files/s, 188914.0 lines/s)
+-------------------------------------------------------------------------
+Language             files         blank        comment            code
+-------------------------------------------------------------------------
+C                      10           4680          6621            30812
+C/C++ Header            3             99           286              496
+-------------------------------------------------------------------------
+SUM:                   13           4779          6907            31308
+-------------------------------------------------------------------------
+\end{verbatim}
+
+\hypertarget{cssstats}{%
+\subsection{CSS Stats}\label{cssstats}}
+
+O Css Stats é uma ferramenta de código aberto que gera uma análise das folhas de estilo de determinado projeto. Para realizar essa análise, é necessária a \emph{URL} do projeto em funcionamento. Assim, a partir do dados de estilo obtidos, é possível diagnosticar áreas de alta complexidade, reastrear a perfomance e melhorar a consistência do \emph{design}.
+
+O Css Stats gera uma página com vários dados sobre as folhas de estilo do projeto. Nessa página, é possível visualizar o tamanho do arquivo antes e depois da compressão e ainda analisar vários resultados sobre a consistência do design. Por exemplo, quantas declarações únicas de tamanho e cor de fonte.
+
+Abaixo temos uma imagem de exemplo com alguns resultados.
+
+\begin{figure}[H]
+\centering
+\includegraphics{figuras/Capturar.JPG}
+\caption{Dados de estilo da página do Github.com}
+\end{figure}
+
+\hypertarget{gitwalk}{%
+\subsection{Git Walk}\label{gitwalk}}
+
+O Git Walk é um \emph{script} de código aberto no qual é possível navegar entre os \emph{commits} de um projeto. Por meio de comandos simples, é possível acessar os commits que foram realizados na linha do tempo de desenvolvimento de um projeto.  
+
+Para visualizar o útlimo commit, rodamos o seguinte comando:
+
+\texttt{git walk (last|latest)}
+
+Para visualizar o primeiro commit, rodamos o seguinte comando:
+
+\texttt{git walk (last|latest)}
+
+Para visualizar o próximo commit, rodamos o seguinte comando:
+
+\texttt{git walk next [n\_commits]}
+
+Para visualizar o commit anterior, rodamos o seguinte comando:
+
+\texttt{git walk prev [n\_commits]}
+
+\hypertarget{seaborn}{%
+\subsection{Seaborn}\label{seaborn}}
+
+O Seaborn é uma biblioteca de visualização de dados em Python baseado na biblioteca do Matplotlib. Com o Seaborn é possível criar gráficos atrativos e informativos por meio de uma interface de alto nível.
+
+Abaixo temos uma imagem que mostra um exemplo de um gráfico gerado na ferramenta Seaborn.
+
+\begin{figure}[H]
+\centering
+\includegraphics{figuras/seaborn.png}
+\caption{Gráfico gerado com o Seaborn que foi utilizado nos resultados deste trabalho}
+\end{figure}
+
+\hypertarget{googlesheets}{%
+\subsection{Google Sheets}\label{googlesheets}}
+
+O Google Sheets é um programa de planilha incluído como parte de um pacote de escritório de \emph{software} gratuito baseado na Web oferecido pelo Google em seu serviço Google Drive. Nestre projeto, o Google Sheets foi utilizado para estudo e visualização dos dados gerados, em \emph{csv}, pela ferramenta CLOC. Os dados foram formatados e, assim, vários gráficos foram gerados. Alguns deles estão presentes nesse trabalho.
+
+\newpage
+
+\hypertarget{resultados}{%
+\chapter{Resultados}\label{resultados}}
+
+\hypertarget{avaliacao}{%
+\section{Avaliação da Metodologia}\label{avaliacao}}
+
+O primeiro passo para a avaliação da metodologia foi buscar uma lista de projetos para realizar a análise. Essa busca foi feita nos principais sistemas de gerenciamento de projetos e versões de códigos, como o GitHub e o Gitlab. O objeto de busca estabelecido foi de projetos de desenvolvimento web.
+
+A partir de uma lista disponível dentro de um projeto chamado \emph{awesome-tailwindcss}\nocite{githublist} no GitHub, foram selecionados 5 projetos que aplicam a metodologia atômica no seu desenvolvimento, utilizando o Tailwind CSS.
+
+A lista de 5 projetos que seguem a metodologia tradicional foi selecionada a partir da lista de projetos do Gitlab, de forma aleatória.
+
+Com os projetos selecionados, foi utilizado o CLOC (\emph{Count Lines of Code}) para contar a quantidade de linhas de código de cada tecnologia em um determinado projeto. As amostras foram coletadas no último \emph{commit} e também foi coletado o histórico dessa quantidade ao longo dos \emph{commits} do projeto. Para isso, foi utilizado o \emph{Git Walk}\nocite{gitwalk}, que é um \emph{script} em \emph{Python} utilizado para facilitar a navegação entre os commits de um projeto, facilitando assim a coleta de dados para compor o histórico do projeto.
+
+\begin{figure}[H]
+\centering
+\includegraphics{figuras/cloc.png}
+\caption{Exemplo de utilização do \emph{cloc} e do \emph{git walk}.}
+\end{figure}
+
+Dessa forma, os dados foram obtidos e formatados para as futuras análises. Duas tecnologias foram usadas para gerar gráficos, o \emph{Seaborn}, utilizando a linguagem \emph{Python} e o \emph{Google Sheets}.
+
+A seguir, são apresentados os gráficos gerados com o foco de comparar as metodologias atômica e tradicional.
+
+\hypertarget{porcentagem de estilo}{%
+\subsection{Porcentagem de estilo}\label{parcel}}
+
+Na figura abaixo, temos um gráfico que mostra o percentual final de linhas de estilo em relação ao total de linhas, tanto de estilo como de código de programação. Podemos perceber que há uma porcentagem maior de linhas de estilo na metodologia tradicional. 
+
+\begin{figure}[H]
+\centering
+\includegraphics{figuras/barra-linha-estilo.png}
+\caption{Comparação da porcentagem de estilo}
+\end{figure}
+
+\newpage
+
+\hypertarget{porcentagem de estilo}{%
+\subsection{Porcentagem de estilo em relação ao tamanho do projeto}\label{parcel}}
+
+Abaixo, temos dois gráficos que buscam analisar a mesma situação. A partir deles, podemos concluir que as linhas de estilo tem uma porcentagem maior nos projetos que seguem a metodologia tradicional. Além disso, podemos verificar que o total de linhas de um projeto não é um fator que afeta na porcentagem de estilo.
+
+\begin{figure}[H]
+\centering
+\includegraphics{figuras/porcentagem-linhas-estilo.png}
+\caption{Comparação da porcentagem de estilo}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics{figuras/tamanho-projeto.png}
+\caption{Total de linhas dos projetos}
+\end{figure}
+
+
+\hypertarget{porcentagem de estilo}{%
+\subsection{Porcentagem de estilo ao longo do projeto}\label{parcel}}
+
+No gráfico abaixo, é feita uma comparação do crescimento do CSS ao longo do desenvolvimento de cada projeto, desse modo é possível analisar a porcentagem de estilo ao longo do desenvolvimento do projeto. Para a geração desse gráfico, foram alinhadas seis coletas de dados durante o desenvolvimento dos projetos.
+
+Assim como nos outros gráficos, podemos tirar a mesma conclusão em relação a porcentagem de estilo e a metodologia utilizada ao longo do desenvolvimento dos projetos. Podemos concluir também que há uma variação consideravelmente maior entre os valores máximos e mínimos nos projetos de metodologia tradicional, já que não existe um padrão a se seguir. Além disso, podemos afirmar que há uma tendência de queda da porcentagem de estilo a partir de um determinado momento em ambas metodologias, sendo que na metodologia atômica essa tendência ocorre mais cedo.
+
+
+\begin{figure}[H]
+\centering
+\includegraphics{figuras/commit-porcentagem-estilo.png}
+\caption{Comparação da porcentagem de estilo}
+\end{figure}
+
+
+\hypertarget{porcentagem de estilo}{%
+\subsection{Quantidade de linhas de estilo por arquivo}\label{parcel}}
+
+A partir do gráfico abaixo, podemos concluir que a métrica de quantidades de linhas de estilo por arquivo não segue nenhum padrão. Não há distinção entre as duas metodologias nesse quesito.
+
+Geralmente os arquivos de CSS são maiores, porém não há uma relação entre o tamanho dos arquivos de CSS e o tamanho dos arquivos de código de programação.
+
+
+\begin{figure}[H]
+\centering
+\includegraphics{figuras/estilo-por-arquivo.png}
+\caption{Comparação da porcentagem de estilo}
+\end{figure}
+
+\hypertarget{porcentagem de estilo}{%
+\subsection{Histórico de commits dos projetos}\label{parcel}}
+
+Abaixo, temos um comparativo com o histórico de commits dos projetos de ambas as metodologias. Todos os projetos da mesma metodologia seguem um mesmo padrão e fica evidente que os projetos da metodologia tradicional possuem um percentual de linhas de estilo maior se comparado com os projetos de metodologia atômica. Ainda, os gráficos mostram que, com o uso da metodologia atômica, o crescimento das linhas de estilo é limitado. Já na metodologia tradicional não há um padrão, porém a tendência é um crescimento indefinido do CSS.
+
+A partir desse resultado, poderia ser feita uma análise para calcular a economia de esforço entre as duas metodologias. O COCOMO propõe a seguinte fórmula para um projeto do tipo orgânico (time de desenvolvimento pequeno com boa experiência trabalhando com requisitos não rígidos).
+
+ \[E = 3,2(KLOC)^{1,05}\]
+
+$E$ é o esforço calculado e $KLOC$ é o número de $kilo$ linhas de código. Se calcularmos esse resultado levando em conta a quantidade de linhas de código de estilo, teríamos uma grande vantagem para a metodologia atômica. Entretanto, esse modelo não quantifica o esforço de refatoração e reescrita de código, que acontece com frequência maior nos projetos que seguem a metodologia tradicional.
+
+Além disso, uma das maiores limitações desse modelo é que ele não leva em consideração o aumento da complexidade dos arquivos HTML, já que na metodologia atômica, todas as decisões de estilo são feitas nesses arquivos. Uma análise mais profunda teria que ser feita para analisar se o esforço economizado ao se escrever uma quantidade consideravelmente menor de linhas de código de estilo é vantajoso se compararmos com esforço extra empreendido ao realizar as decisões de estilo no HTML.
+
+\begin{figure}[H]
+\centering
+\includegraphics{figuras/juntoss.png}
+\caption{Histórico de commits dos projetos}
+\end{figure}
+
+Abaixo temos duas tabelas que comparam algumas declarações de estilo entre projetos de metodologias diferentes.
+
+\begin{table}[H]
+\begin{tabular}{|l|c|c|}
+\hline
+                                     & \textbf{Atômico - Speedcube} & \textbf{Tradicional - Gitlab} \\ \hline
+Linhas de estilo                     & 34621                        & 33622                         \\ \hline
+Declarações únicas de cores de fonte & 16                           & 402                           \\ \hline
+Declarações únicas de cores de fundo & 16                           & 239                           \\ \hline
+Declarações únicas tamanhos de fonte & 18                           & 59                            \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\begin{tabular}{|l|c|c|}
+\hline
+                                     & \textbf{Atômico - Litcher} & \textbf{Tradicional - Eletronjs.org} \\ \hline
+Linhas de estilo                     & 254                        & 6125                                 \\ \hline
+Declarações únicas de cores de fonte & 21                         & 153                                  \\ \hline
+Declarações únicas de cores de fundo & 13                         & 167                                  \\ \hline
+Declarações únicas tamanhos de fonte & 13                         & 50                                   \\ \hline
+\end{tabular}
+\end{table}
+
+Em ambas análises, os projetos que seguem a metodologia atômica apresentaram uma menor diferença entre o total de declarações e o número de declarações únicas, o que evidencia uma maior reutilização de código. Além disso, esses projetos também apresentaram uma média menor de especificidade dos seus seletores, se comparado aos projetos de metodologia tradicional. Esses fatores aumentam a manutenibilidade do código e tornam o \emph{design} mais consistente.
+
+
+
+\newpage
+
+
+
+\hypertarget{conclusuxe3o}{%
+\chapter{Conclusão}\label{conclusuxe3o}}
+
+Atualmente existem várias ferramentas que buscam otimizar a escrita de
+folhas de estilo. O uso do CSS atômico resulta em um carregamento mais
+rápido da página, melhor uso do \emph{cache} e ainda elimina a
+redundância e o inchaço do CSS.
+
+Existe uma relação entre o tamanho do arquivo de CSS e a perfomance da aplicação. Arquivos menores resultam em um tempo menor de carregamento da página \cite{ardeljan, bece}. Porém, é necessário relatar que existem outros processos que são utilizados para reduzir o tamanho de um arquivo de CSS, como a minificação e a compressão.
+
+A partir dos resultados obtidos, é seguro dizer que projetos que seguem a metodologia atômica possuem um percentual de linhas de estilo reduzido e com isso, há um ganho de performance na aplicação.
+
+Tendo isso em vista, o objetivo do trabalho foi parcialmente alcançado. As comparações entre as duas metodologias foram estabelecidas e os resultados obtidos foram claros. Tendo o percentual de linhas de estilo em um projeto como um fator de perfomance da aplicação, aplicações que seguem a metodologia atômica são mais performáticas. Além disso, a manutenibilidade de projetos que seguem a metodologia atômica é maior e esses projetos tendem a ser mais consistentes em termos de \emph{design}.
+
+Porém, todas as comparações foram realizadas entre projetos distintos e analisar um mesmo projeto que sofreu uma refatoração nas suas folhas de estilo poderia trazer resultados interessantes para esta análise. Além disso, para validar o uso da metodologia atômica ainda seria necessário analisar a produtividade de uma equipe de desenvolvimento ao aplicar as duas metodologias.
+
+Para trabalhos futuros, existem duas análises que podem ser realizadas. A primeira consiste na performance da equipe de desenvolvimento ao se utilizar as duas metodologias, podendo medir a produtividade e qual a curva de aprendizado necessária para ambas. A segunda consiste na análise de um projeto que sofreu uma completa refatoração das suas folhas de estilo, passando da metodologia tradicional para a atômica, podendo assim medir quais os ganhos e perdas nesse processo.  
+\nocite{hooks}
+
+\bibliography{bib} 
+
+\hypertarget{apuxeandice}{%
+\chapter{Apêndice}\label{apuxeandice}}
+
+\hypertarget{apuxeandice-a---motivauxe7uxe3o-do-uso-de-css-atuxf4mico}{%
+\section{APÊNDICE A - Motivação do uso de CSS
+Atômico}\label{apuxeandice-a---motivauxe7uxe3o-do-uso-de-css-atuxf4mico}}
+
+\hypertarget{fase-1-css-semuxe2ntico}{%
+\subsection{Fase 1: CSS Semântico}\label{fase-1-css-semuxe2ntico}}
+
+Ao se aprender CSS, é muito comum ouvir dizer sobre algumas boas
+práticas da escrita. Uma delas é sobre a separação de interesses. Essa
+boa prática apresenta uma ideia em que o HTML deve manter informações
+apenas sobre o conteúdo e todas as suas decisões de estilo devem ser
+escritas no CSS. Então, as classes HTML devem ser puramente sobre o
+conteúdo o qual elas aplicam, como, por exemplo,
+\texttt{class="biografia"} ou \texttt{class="noticias"}. Portanto, os
+estilos de centralização e margem, por exemplo, estarão no CSS.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{<div}\OtherTok{ class=}\StringTok{"biografia"}\KeywordTok{>} 
+    \KeywordTok{<img}\OtherTok{ src=}\StringTok{"http..."}\KeywordTok{>} 
+    \KeywordTok{<div>} 
+        \KeywordTok{<h2>}\NormalTok{Title}\KeywordTok{</h2>} 
+        \KeywordTok{<p>}\NormalTok{Lorem Ipsum}\KeywordTok{</p>} 
+    \KeywordTok{</div>} 
+\KeywordTok{</div>}
+\end{Highlighting}
+\end{Shaded}
+
+Existem problemas com esse tipo de escrita, muitas vezes o CSS se torna
+um espelho do HTML, refletindo todas as estruturas com os seletores
+aninhados. Desse modo, apesar do HTML estar distante das estilizações, o
+CSS acaba se adaptando muito à estrutura de marcação. Isso mostra que os
+interesses não estão separados como deveriam.
+
+Além disso, Thierry Koblentz, em seu artigo \emph{Challenging CSS Best
+Practices}, expõe que o seguir o princípio da separação de interesses,
+leva à um inchaço do arquivo de CSS, além de causar redundância e um mau
+gerenciamento de \emph{cache}. Mudanças simples no estilo do elemento
+resultam em novas regras na folha de estilo. Ainda, relata que o único
+modo de se aprimorar como autor de folhas de estilo é não seguindo esses
+preceitos.
+
+\hypertarget{fase-2-desacoplando-estilo-da-estrutura}{%
+\subsection{Fase 2: Desacoplando Estilo da
+Estrutura}\label{fase-2-desacoplando-estilo-da-estrutura}}
+
+Para evitar esse acoplamento, recomenda-se adicionar mais classes ao
+HTML, como \texttt{class="biografia-corpo"} e
+\texttt{class="biografia-imagem"}. Desse modo, mantém-se a
+especificidade dos seletores baixa e o seu CSS fica menos dependente da
+estrutura do HTML. Uma metodologia que utiliza esse padrão de escrita é
+o BEM, que já foi citado nesse documento.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{<div}\OtherTok{ class=}\StringTok{"biografia"}\KeywordTok{>} 
+    \KeywordTok{<img}\OtherTok{ class=}\StringTok{"biografia-imagem"}\OtherTok{ src=}\StringTok{"http..."}\KeywordTok{>} 
+    \KeywordTok{<div}\OtherTok{ class=}\StringTok{"biografia-conteúdo"> }
+\StringTok{        }\ErrorTok{<}\StringTok{h2 class="}\ErrorTok{biografia-nome"}\KeywordTok{>}\NormalTok{Nome}\KeywordTok{</h2>} 
+        \KeywordTok{<p}\OtherTok{ class=}\StringTok{"biografia-corpo"}\KeywordTok{>}\NormalTok{Lorem ipsum lorem ipsum}\KeywordTok{</p>} 
+    \KeywordTok{</div>} 
+\KeywordTok{</div>}
+\end{Highlighting}
+\end{Shaded}
+
+Dessa forma, o HTML permanece ``semântico'' e ainda não contém decisões
+de estilo, e CSS está desacoplado da estrutura de marcação. Porém existe
+um problema ao lidar com componentes similares.
+
+Foi criado um novo requisito e é necessário adicionar um componente de
+visualização de artigo em um estilo bem parecido, com uma imagem e um
+conteúdo, com título e um resumo. A melhor forma de lidar com essa
+situação e ainda sim separar os interesses é escrever um componente
+novo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{<div}\OtherTok{ class=}\StringTok{"artigo"}\KeywordTok{>} 
+    \KeywordTok{<img}\OtherTok{ class=}\StringTok{"artigo-imagem"}\OtherTok{ src=}\StringTok{"http..."}\KeywordTok{>} 
+    \KeywordTok{<div}\OtherTok{ class=}\StringTok{"artigo-conteúdo"> }
+\StringTok{        }\ErrorTok{<}\StringTok{h2 class="}\ErrorTok{artigo-título"}\KeywordTok{>}\NormalTok{Nome}\KeywordTok{</h2>} 
+        \KeywordTok{<p}\OtherTok{ class=}\StringTok{"artigo-resumo"}\KeywordTok{>}\NormalTok{Lorem ipsum lorem ipsum}\KeywordTok{</p>} 
+    \KeywordTok{</div>} 
+\KeywordTok{</div>}
+\end{Highlighting}
+\end{Shaded}
+
+Porém ao escrever o CSS para esse novo componente, seria uma duplicação
+do estilo do componente de \texttt{.biografia}. É uma opção, porém não
+segue os padrões de escrita de código, como o ``DRY'' (\emph{don't
+repeat yourself}) e isso pode levar a inconsistências de design, caso um
+dos componentes seja alterado sem que aconteça as mesmas mudanças no
+outro.
+
+Para evitar essa repetição, usando um pré-processador, existe a função
+\texttt{@extend} em CSS. Assim, é possível extender as funções do
+componente \texttt{.biografia}no componente \texttt{.artigo}. Com isso,
+o problema parece estar resolvido, a duplicação do CSS é removida e o
+HTML ainda está livre de decisões de estilo. Porém, ainda existe outra
+opção.
+
+Apesar de não conter nenhum conteúdo semântico similar, os componentes
+\texttt{.biografia} e \texttt{.artigo} contém muito em comum em uma
+perspectiva de design. Assim, podemos criar um componente
+\texttt{.cartão} genérico para representar essas características comum e
+aplicar aos dois casos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{<div}\OtherTok{ class=}\StringTok{"cartão"}\KeywordTok{>} 
+    \KeywordTok{<img}\OtherTok{ class=}\StringTok{"cartão-imagem"}\OtherTok{ src=}\StringTok{"http..."}\KeywordTok{>} 
+    \KeywordTok{<div}\OtherTok{ class=}\StringTok{"cartão-conteúdo"> }
+\StringTok{        }\ErrorTok{<}\StringTok{h2 class="}\ErrorTok{cartão-título"}\KeywordTok{>}\NormalTok{Nome autor / Título artigo}\KeywordTok{</h2>} 
+        \KeywordTok{<p}\OtherTok{ class=}\StringTok{"cartão-resumo"}\KeywordTok{>}\NormalTok{Lorem ipsum lorem ipsum}\KeywordTok{</p>} 
+    \KeywordTok{</div>} 
+\KeywordTok{</div>}
+\end{Highlighting}
+\end{Shaded}
+
+Essa abordagem remove a duplicação, porém não está de acordo com o
+padrão de separação de interesse. O HTML agora está escrito de forma os
+dois componentes com a classe \texttt{.cartão} terão o mesmo estilo, e
+isso, claramente, é uma decisão de estilo. Além disso, não seria
+possível mudar o estilo de um sem alteração no outro. Para realizar uma
+estilização em apenas um dos componentes teríamos que editar o HTML, o
+que é contra a abordagem de separação de interesses.
+
+Entretanto, o autor defende que a não separação de interesses não é
+simplesmente ruim e, na verdade, existem duas formas de se escrever HTML
+e CSS.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{CSS que depende do HTML} Nessa abordagem, o HTML é
+  independente porém, o CSS precisa saber as classes do HTML e precisa
+  achá-las na estrutura. O HTML é reestilizável mas o CSS não é
+  reutilizável.
+\item
+  \textbf{HTML que depende do CSS} Já nessa outra abordagem, O HTML não
+  é independente e utiliza classes que são pensadas primeiro no CSS,
+  para atingir um estilo especificado. O CSS é reutílizável e o HTML não
+  é reestilizável.
+\end{itemize}
+
+Nicolas Gallagher, em seu artigo \emph{About HTML semantics and
+front-end architecture}, defende que um CSS reutilizável é a melhor
+opção, principalmente em aplicações grande. Nessas aplicações percebe-se
+que ao passo que o código cresce, mais difícil é a sua manutenção e
+utilizando componentes CSS reutilizáveis reduz o tempo de escrita e
+edição do mesmo. Já que, nesse caso, é necessário aplicar mudanças nas
+classes do HTML. O autor ainda afirma que é uma prática que beneficia os
+desenvolvedores visto que mudanças no HTML são mais literais.
+
+\hypertarget{fase-3-componente-css-desconectado-com-conteuxfado}{%
+\subsection{Fase 3: Componente CSS Desconectado com
+Conteúdo}\label{fase-3-componente-css-desconectado-com-conteuxfado}}
+
+Ao criar classes abrangentes e reutilizáveis podemos criar composições
+novas juntando os componentes, sem escrever nenhuma linha de CSS. Se,
+por acaso, o componente não for reutilizável ou então se a criação de
+subcomponentes causar muita repetição, deve-se focar na criação de
+classes mais abrangentes de modo a desconectar o máximo possível com o
+conteúdo. Desse modo, é possível contemplar todas as opções e, com isso,
+aumentar a reutilização.
+
+\hypertarget{fase-4-componente-desconectado-com-conteuxfado-classes-de-utilidade}{%
+\subsection{Fase 4: Componente Desconectado com Conteúdo + Classes de
+Utilidade}\label{fase-4-componente-desconectado-com-conteuxfado-classes-de-utilidade}}
+
+Dar nomes aos componentes pensando na sua reutilização é um trabalho que
+demanda tempo. Por exemplo, se temos um componente genérico que se chama
+\texttt{.lista-de-ações} e gostaríamos que esse componente fosse
+alinhado à esquerda. Podemos criar um modificador
+\texttt{.lista-de-ações-\/-esquerda} e aplicar a propriedade CSS
+\texttt{text-align:\ left;} à essa classe. Porém estamos criando um novo
+modificador para a \texttt{.lista-de-ações} que não será reutilizado em
+nenhum outro lugar fora desse componente.
+
+Para resolver esse problema, podemos criar uma classe que seja capaz de
+ser reutilizável e que implemente o efeito desejado no componente.
+Podemos nomear a classe de \texttt{.align-left} que simplesmente irá
+alinhar o componente à esquerda. Assim, vemos que as classes de
+utilidade são uma ótima solução a fim de aumentar a reutilização do CSS.
+
+Podemos também criar uma classe \texttt{.mar-r-sm} em que irá adicionar
+uma \texttt{margin-right:\ 1rem;} ao elemento. Com a adição dessas
+classes, além da já dita reutilização, o CSS tende a diminuir de
+tamanho, já que mais classes são adicionadas no HTML. Com isso, não há
+necessidade de criar nenhum tipo de estruturação dentro do CSS,
+deixando-o compacto e resolvendo qualquer tipo de problema com
+especificidade.
+
+\hypertarget{fase-5-priorizar-a-utilidade}{%
+\subsection{Fase 5: Priorizar a
+Utilidade}\label{fase-5-priorizar-a-utilidade}}
+
+Com essa nova perspectiva, podemos criar um conjunto de classes de
+utilidade para contemplar vários aspectos como:
+
+\begin{itemize}
+\tightlist
+\item
+  Tamanho de texto, cores e pesos
+\item
+  Bordas
+\item
+  Cores de fundo
+\item
+  \emph{Grid} e \emph{flexbox}
+\item
+  Preenchimento e margem
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{<div}\OtherTok{  class=}\StringTok{"py-3 px-4 border-b border-dark-soft flex-spaced flex-y-center"}\KeywordTok{>}  
+    \KeywordTok{<div}\OtherTok{  class=}\StringTok{"text-ellipsis mr-4"}\KeywordTok{>}  
+        \KeywordTok{<a}\OtherTok{  href=}\StringTok{"..."}\OtherTok{  class=}\StringTok{"text-lg text-medium"}\KeywordTok{>} 
+\NormalTok{            Test-Driven Laravel }
+        \KeywordTok{</a>}  
+    \KeywordTok{</div>}  
+\KeywordTok{</div>}
+\end{Highlighting}
+\end{Shaded}
+
+É possível criar uma interface totalmente nova sem escrever nenhuma nova
+linha de CSS. Ao seguirmos a trilha de criar componentes focando na sua
+reutilização, o uso de classes de utilidade é o caminho natural.
+
+Segundo Wathan, um dos maiores benefícios de se ter um conjunto de
+classes de utilidades que sejam objetivas e agrupáveis é que todo
+desenvolvedor do time tem que escolher sempre um valor dentro de um
+conjunto de opções fixas.
+
+Essa vantagem elimina problemas de inconsistência no seu CSS. Quando se
+escolhe um valor dentro de opções fixas, não há espaço para a criação de
+valores arbitrários. O desenvolvedor fica impedido de criar um novo
+valor para o tamanho de uma fonte porque, no seu julgamento, considerou
+que aquele texto específico deveria ser um pouco menor, por exemplo.
+
+Abaixo vemos uma lista de grandes \emph{sites} e o quanto esse problema
+pode ser impactante\nocite{cssstats}:
+
+\begin{itemize}
+\tightlist
+\item
+  GitLab:
+  402 cores de texto, 239 cores de fundo, 59 tamanhos de fonte
+\item
+  Buffer:
+  124 cores de texto, 86 cores de fundo, 54 tamanhos de fonte
+\item
+  HelpScout:
+  198 cores de texto, 133 cores de fundo, 67 tamanhos de fonte
+\item
+  Gumroad:
+  91 cores de texto, 28 cores de fundo, 48 tamanhos de fonte
+\item
+  GitHub:
+  197 cores de texto, 177 cores de fundo, 51 tamanhos de fonte
+\item
+  ConvertKit:
+  128 cores de texto, 124 cores de fundo, 70 tamanhos de fonte
+\end{itemize}
+
+Quando todos os envolvidos no projeto tomam suas decisões de estilo a
+partir de um conjunto limitado de opções, previne-se que o CSS cresça em
+proporções desnecessárias e as definições são sempre consistentes no
+projeto.
+
+Porém, ainda recomenda-se que componentes sejam criados. Deve-se
+construir o projeto seguindo a abordagem de se priorizar a utilidade e
+extrair componentes quando alguma duplicação aparecer. Abaixo temos um
+botão criado tomando como referência um conjunto de classes de
+utilidade, neste caso, o \href{http://tachyons.io/}{Tachyons}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{<button}\OtherTok{ class=}\StringTok{"f6 br3 ph3 pv2 white bg-purple hover-bg-light-purple"}\KeywordTok{>} 
+\NormalTok{    Salvar}
+\KeywordTok{</button>}
+\end{Highlighting}
+\end{Shaded}
+
+Se for necessário utilizar esse botão com a mesma combinação de classes
+em outras partes do código, a abordagem recomendada pela ferramenta
+Tachyons é criar uma abstração por meio de um \emph{template} e não pelo
+CSS. Com o \href{https://mithril.js.org/}{Mithril.js}, por exemplo,
+podemos criar um componente para usá-lo assim:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AttributeTok{m}\NormalTok{(ButtonTeste}\OperatorTok{,} \StringTok{"purple"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+A definição do componente pode ser escrita assim:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{export} \KeywordTok{let}\NormalTok{ ButtonTeste }\OperatorTok{=} \OperatorTok{\{}
+    \DataTypeTok{view}\OperatorTok{:}\NormalTok{ (vnode) }\KeywordTok{=>} \OperatorTok{\{}
+        \KeywordTok{var}\NormalTok{ classes }\OperatorTok{=} \StringTok{""}\OperatorTok{;}
+        \ControlFlowTok{switch}\NormalTok{(}\VariableTok{vnode}\NormalTok{.}\AttributeTok{children}\NormalTok{[}\DecValTok{0}\NormalTok{])}\OperatorTok{\{}
+            \ControlFlowTok{case}\NormalTok{(}\StringTok{"purple"}\NormalTok{)}\OperatorTok{:}
+\NormalTok{                classes }\OperatorTok{=} \StringTok{".white.bg-purple.hover-bg-light-purple"}\OperatorTok{;}
+                \ControlFlowTok{break}\OperatorTok{;}
+            \ControlFlowTok{case}\NormalTok{(}\StringTok{"gray"}\NormalTok{)}\OperatorTok{:}
+\NormalTok{                classes }\OperatorTok{=} \StringTok{".mid-gray bg-light-gray hover-bg-light-silver"}\OperatorTok{;}
+                \ControlFlowTok{break}\OperatorTok{;}
+        \OperatorTok{\}}
+        \ControlFlowTok{return} \AttributeTok{m}\NormalTok{(}\VerbatimStringTok{`button.f6.br3.ph3.pv2}\SpecialCharTok{$\{}\NormalTok{classes}\SpecialCharTok{\}}\VerbatimStringTok{`}\OperatorTok{,} \StringTok{"Salvar"}\NormalTok{)}
+    \OperatorTok{\}}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Essa é uma abordagem válida para vários projetos, porém há casos em que
+criar um componente CSS é mais prático. Com o
+\href{http://lesscss.org/}{Less}, é possível criar um componente
+\texttt{.btn-purpple} apenas declarando as classes na definição da nova
+classe, já que, nessa ferramenta, é possível usar classes existentes
+como \emph{mixins}. Já no Sass ou no Stylus, é necessário criar um
+\emph{mixin} separado para cada classe de utilidade e depois importá-los
+na classe do componente.
+
+Adam Wathan, relata que sua experiência com a abordagem de piorizar a
+utilidade o levou a desenvolver designs mais consistentes, por mais
+atípico que pareça, se comparado a uma abordagem priorizando
+componentes.
+
+Thierry Koblentz aponta que a maior vantagem no uso do CSS atômico é
+que, ao utilizar o HTML para criar os estilos, reduzimos o escopo
+drasticamente. Já não se estiliza no escopo global, a folha de estilo, e
+sim no nível de um elemento ou bloco. Não é preciso adicionar regras
+novas à folha de estilo para alterar o estilo de um módulo e, ainda, não
+há a possibilidade desse estilo novo interferir sobre outro estilo já
+existente, já que a regra é aplicada apenas no módulo que possui
+determinada classe. Não há redundância, seletores não são duplicados e
+não há problemas com especificidade. Além disso, ao abandonar um estilo
+a regra não fica obsoleta.
+
+\end{document}
