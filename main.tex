@@ -411,7 +411,7 @@ Para calcular a especificidade, temos as seguintes ordens lexicográficas:
   \item
   \textbf{Estilo em linha}: {[}1,0,0,0{]}
   \item
-  \textbf{Important}:
+  \textbf{!important}
 \end{itemize}
 
 
@@ -573,8 +573,7 @@ seguinte lógica:
   \end{itemize}
 \end{itemize}
 
-Nessa metodologia existe uma regra de nomeação que segue um padrão. Os
-\emph{blocks} consistem de letras, dígitos e traços
+Nessa metodologia existe uma regra de nomeação que segue um padrão.
 
 \begin{itemize}
 \tightlist
@@ -907,6 +906,11 @@ preferência a escrita mais concisa e objetiva.
 propriedades CSS correspondentes. Assim o nome da classe é semelhante,
 ou muitas vezes igual, ao nome da propriedade que ela define.
 
+\hypertarget{componentes}{%
+\subparagraph{Componentes}\label{componentes}}
+
+Além dessas outras abordagens, na metodologia atômica, existe a possibilidade de criação de componentes a partir de estilos que se repetem, criando uma combinação de classes de utilidade para serem utilizadas juntamente sem a necessidade de repetí-las sempre.
+
 \hypertarget{termos-relacionados}{%
 \paragraph{Termos Relacionados}\label{termos-relacionados}}
 
@@ -954,6 +958,8 @@ implementação de telas responsivas seja simples e eficaz.
 \hypertarget{frameworksexistentes}{%
 \subsection{Frameworks Existentes}\label{frameworksexistentes}}
 
+Normalmente, a utilização do CSS atômico se dá a partir do consumo de folhas de estilo de frameworks já existentes, abaixo são citados dois frameworks que são comumente utilizados na comunidade.
+
 \hypertarget{tailwind}{%
 \subparagraph{Tailwind}\label{tailwind}}
 
@@ -962,7 +968,7 @@ O Tailwind CSS é um framework que segue o padrão legível na nomeclatura das c
 \hypertarget{tachyons}{%
 \subparagraph{Tachyons}\label{tachyons}}
 
-O Tachyons é um framework que segue o padrão abreviado na nomeclatura das classes
+O Tachyons é um framework que segue o padrão abreviado na nomeclatura das classes e é bem compacto. A premissa do Tachyons é que 15kb de CSS após a compressão e a minificação é o necessário para desenvolver qualquer aplicação.
 
 \hypertarget{justificativa}{%
 \subsection{Justificativa}\label{justificativa}}
@@ -1017,6 +1023,8 @@ literais \cite{gallagher}.
 \hypertarget{tecnologias-e-ferramentas}{%
 \section{Tecnologias e
 Ferramentas}\label{tecnologias-e-ferramentas}}
+
+Esta seção descreve as tecnologias e ferramentas utilizadas neste projeto.
 
 \hypertarget{cloc}{%
 \subsection{Cloc}\label{cloc}}
@@ -1159,7 +1167,7 @@ Abaixo, temos dois gráficos que buscam analisar a mesma situação. A partir de
 \hypertarget{porcentagem de estilo}{%
 \subsection{Porcentagem de estilo ao longo do projeto}\label{parcel}}
 
-No gráfico abaixo, é feita uma comparação do crescimento do CSS ao longo do desenvolvimento de cada projeto, desse modo é possível analisar a porcentagem de estilo ao longo do desenvolvimento do projeto. Para a geração desse gráfico, foram alinhadas seis coletas de dados durante o desenvolvimento dos projetos.
+No gráfico abaixo, é feita uma comparação do crescimento do CSS ao longo do desenvolvimento de cada projeto, desse modo é possível analisar a porcentagem de estilo ao longo do desenvolvimento do projeto. Para a geração desse gráfico, foram alinhadas seis coletas de dados durante o desenvolvimento dos projetos, sendo a primeira no início e a última ao fim, para manter o histórico ao longo dos projetos.
 
 Assim como nos outros gráficos, podemos tirar a mesma conclusão em relação a porcentagem de estilo e a metodologia utilizada ao longo do desenvolvimento dos projetos. Podemos concluir também que há uma variação consideravelmente maior entre os valores máximos e mínimos nos projetos de metodologia tradicional, já que não existe um padrão a se seguir. Além disso, podemos afirmar que há uma tendência de queda da porcentagem de estilo a partir de um determinado momento em ambas metodologias, sendo que na metodologia atômica essa tendência ocorre mais cedo.
 
@@ -1190,7 +1198,9 @@ Geralmente os arquivos de CSS são maiores, porém não há uma relação entre 
 
 Abaixo, temos um comparativo com o histórico de commits dos projetos de ambas as metodologias. Todos os projetos da mesma metodologia seguem um mesmo padrão e fica evidente que os projetos da metodologia tradicional possuem um percentual de linhas de estilo maior se comparado com os projetos de metodologia atômica. Ainda, os gráficos mostram que, com o uso da metodologia atômica, o crescimento das linhas de estilo é limitado. Já na metodologia tradicional não há um padrão, porém a tendência é um crescimento indefinido do CSS.
 
-A partir desse resultado, poderia ser feita uma análise para calcular a economia de esforço entre as duas metodologias. O COCOMO propõe a seguinte fórmula para um projeto do tipo orgânico (time de desenvolvimento pequeno com boa experiência trabalhando com requisitos não rígidos).
+A partir desse resultado, poderia ser feita uma análise para calcular a economia de esforço entre as duas metodologias. O COCOMO (\emph{Constructive Cost Model}) é um modelo de estimativa do tempo de desenvolvimento de um software, podendo assim avaliar o seu custo.
+
+O COCOMO propõe a seguinte fórmula para um projeto do tipo orgânico (time de desenvolvimento pequeno com boa experiência trabalhando com requisitos não rígidos).
 
  \[E = 3,2(KLOC)^{1,05}\]
 
@@ -1242,7 +1252,7 @@ Em ambas análises, os projetos que seguem a metodologia atômica apresentaram u
 Atualmente existem várias ferramentas que buscam otimizar a escrita de
 folhas de estilo. O uso do CSS atômico resulta em um carregamento mais
 rápido da página, melhor uso do \emph{cache} e ainda elimina a
-redundância e o inchaço do CSS.
+redundância e o inchaço do CSS \cite{ardeljan, koblentz}.
 
 Existe uma relação entre o tamanho do arquivo de CSS e a perfomance da aplicação. Arquivos menores resultam em um tempo menor de carregamento da página \cite{ardeljan, bece}. Porém, é necessário relatar que existem outros processos que são utilizados para reduzir o tamanho de um arquivo de CSS, como a minificação e a compressão.
 
@@ -1252,8 +1262,12 @@ Tendo isso em vista, o objetivo do trabalho foi parcialmente alcançado. As comp
 
 Porém, todas as comparações foram realizadas entre projetos distintos e analisar um mesmo projeto que sofreu uma refatoração nas suas folhas de estilo poderia trazer resultados interessantes para esta análise. Além disso, para validar o uso da metodologia atômica ainda seria necessário analisar a produtividade de uma equipe de desenvolvimento ao aplicar as duas metodologias.
 
+A seleção aleatória dos projetos pode ter causado um certo viés na validade dos resultados, visto que a comparação foi feita entre projetos de natureza e objetivos diferentes. Além disso, comparar uma métrica entre projetos diferentes também pode gerar um viés.
+
 Para trabalhos futuros, existem duas análises que podem ser realizadas. A primeira consiste na performance da equipe de desenvolvimento ao se utilizar as duas metodologias, podendo medir a produtividade e qual a curva de aprendizado necessária para ambas. A segunda consiste na análise de um projeto que sofreu uma completa refatoração das suas folhas de estilo, passando da metodologia tradicional para a atômica, podendo assim medir quais os ganhos e perdas nesse processo.  
 \nocite{hooks}
+
+Todos os dados que foram gerados para a realização deste trabalho, inclusive este texto, estão disponíveis no repositório do Github e podem ser acessados por este link \href{https://github.com/rafaelrabetti/TCC-FGA-UnB}{https://github.com/rafaelrabetti/TCC-FGA-UnB}.
 
 \bibliography{bib} 
 
